@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import MoviesGrid from "../MoviesGrid/MoviesGrid";
+import MovieInfo from "../MovieInfo/MovieInfo";
 import "./SearchBar.css";
 function SearchBar() {
 	const [movies, setMovies] = useState([]);
 	const [userInput, setUserInput] = useState("");
-	const [isLoading, setIsLoading] = useState(true);
-
+	const [searching, setSearching] = useState(true);
+	const [movieID, setMovieID] = useState("");
 	//API call
 	useEffect(() => {
 		if (userInput) {
@@ -24,7 +24,6 @@ function SearchBar() {
 				.then((response) => response.json())
 				.then((data) => {
 					setMovies(data.titles);
-					setIsLoading(false);
 				})
 				.catch((err) => {
 					console.error(err);
@@ -32,18 +31,19 @@ function SearchBar() {
 		}
 	}, [userInput]);
 
-	console.log(movies);
-	console.log(isLoading);
+	// console.log(movies);
+	// console.log(isLoading);
 
 	//input reader
 	const handleOnChange = (event) => {
 		setUserInput(event.target.value);
 	};
 
-	// if (isLoading) {
-	// 	return <div>Loading...</div>;
-	// }
-	// console.log(userInput);
+	const handleOnClick = ({ title }) => {
+		setMovieID(title);
+		setSearching(false);
+	};
+
 	return (
 		<div>
 			<input
@@ -55,20 +55,24 @@ function SearchBar() {
 				onChange={handleOnChange}
 			></input>
 
-			<ul>
-				{movies.map((movie) => (
-					<li>
-						<p>{movie.title}</p>
-						<img
-							src={movie.image}
-							alt={`Poster for the movie ${movie.title}`}
-							height='150px'
-							widht='100px'
-						/>
-						<button>Learn More</button>
-					</li>
-				))}
-			</ul>
+			{searching && (
+				<ul>
+					{movies.map((movie) => (
+						<li key={movie.id}>
+							<p>{movie.title}</p>
+							<img
+								src={movie.image}
+								alt={`Poster for the movie ${movie.title}`}
+								height='150px'
+								widht='100px'
+							/>
+							<button onClick={() => handleOnClick(movie)}>Learn More</button>
+						</li>
+					))}
+				</ul>
+			)}
+
+			{!searching && <MovieInfo movieID={movieID} />}
 		</div>
 	);
 }
