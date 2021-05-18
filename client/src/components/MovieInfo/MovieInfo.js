@@ -1,6 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import LikesCounter from "../LikesCounter/LikesCounter";
 
 function MoviesGrid({ movieID }) {
+	const [movieInfo, setMovieInfo] = useState({});
+
 	useEffect(() => {
 		fetch(
 			`https://imdb-internet-movie-database-unofficial.p.rapidapi.com/film/${movieID}`,
@@ -16,15 +19,26 @@ function MoviesGrid({ movieID }) {
 		)
 			.then((response) => response.json())
 			.then((data) => {
-				console.log(data);
+				setMovieInfo(data);
 			})
 			.catch((err) => {
 				console.error(err);
 			});
 	}, []);
+
+	// console.log(movieInfo);
+
+	const { id, length, title, year, rating, plot, poster, cast } = movieInfo;
+
 	return (
 		<div>
-			<p>Hello</p>
+			{id}
+			{title}
+			{year}
+			{length}
+			{rating}
+			{length}
+			<LikesCounter movieID={id} />
 		</div>
 	);
 }
