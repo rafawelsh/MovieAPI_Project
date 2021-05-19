@@ -52,8 +52,12 @@ function LikesCounter({ movieID }) {
 
 	return (
 		<div>
-			<button onClick={() => handleLikeClick(movieID)}>👍 {likes}</button>
-			<button onClick={() => handleDislikeClick(movieID)}>👎 {dislikes}</button>
+			<button className='counter' onClick={() => handleLikeClick(movieID)}>
+				👍 {likes}
+			</button>
+			<button className='counter' onClick={() => handleDislikeClick(movieID)}>
+				👎 {dislikes}
+			</button>
 		</div>
 	);
 }

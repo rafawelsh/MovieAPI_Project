@@ -4,15 +4,10 @@ body {
   --link-color: #9f0dcd;
   --background-color: #eee;
   --movie-tile: rgb(225, 182, 182);
+  --button-color: rgb(118, 186, 238);
   font-family: "Source Sans Pro", sans-serif;
   background-color: var(--background-color);
   color: var(--text-color);
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
 }
 
 body.is_inverted {
@@ -20,6 +15,7 @@ body.is_inverted {
   --link-color: #faf697;
   --background-color: #222;
   --movie-tile: rgb(155, 129, 129);
+  --button-color: rgb(164, 203, 233);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -28,12 +24,38 @@ body.is_inverted {
     --link-color: #faf697;
     --background-color: #222;
     --movie-tile: rgb(155, 129, 129);
+    --button-color: rgb(164, 203, 233);
   }
   body.is_inverted {
     --text-color: #111;
     --link-color: #9f0dcd;
     --background-color: #eee;
     --movie-tile: rgb(225, 182, 182);
+    --button-color: rgb(118, 186, 238);
   }
+}
+
+#root {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 90vw;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.layout {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
 }
 /*# sourceMappingURL=App.css.map */

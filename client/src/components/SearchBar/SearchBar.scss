@@ -27,5 +27,26 @@
 		h2 {
 			font-size: 1.25rem;
 		}
+		img {
+			height: 50%;
+			width: 50%;
+		}
+	}
+
+	@media (min-width: 768px) {
+		padding-top: 2rem;
+		gap: 2rem;
+
+		.movie {
+			flex: 0 1 250px;
+
+			h2 {
+				font-size: 1.5rem;
+			}
+			img {
+				height: 60%;
+				width: 60%;
+			}
+		}
 	}
 }

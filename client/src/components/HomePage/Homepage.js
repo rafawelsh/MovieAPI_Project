@@ -7,6 +7,7 @@ import "./Homepage.css";
 function Homepage() {
 	const [movieID, setMovieID] = useState("");
 	const [searching, setSearching] = useState(true);
+	const [userInput, setUserInput] = useState("");
 
 	return (
 		<div className='homepage'>
@@ -18,6 +19,8 @@ function Homepage() {
 						setMovieID={setMovieID}
 						searching={searching}
 						setSearching={setSearching}
+						userInput={userInput}
+						setUserInput={setUserInput}
 					/>
 				</>
 			)}

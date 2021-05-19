@@ -1,12 +1,21 @@
 import React, { useState, useEffect } from "react";
 import "./SearchBar.css";
 
-function SearchBar({ movieID, setMovieID, searching, setSearching }) {
+function SearchBar({
+	movieID,
+	setMovieID,
+	searching,
+	setSearching,
+	userInput,
+	setUserInput,
+}) {
 	const [movies, setMovies] = useState([]);
-	const [userInput, setUserInput] = useState("");
 
 	//API call
 	useEffect(() => {
+		if (userInput === "") {
+			setMovies();
+		}
 		if (userInput) {
 			fetch(
 				`https://imdb-internet-movie-database-unofficial.p.rapidapi.com/search/${userInput}`,
@@ -54,20 +63,22 @@ function SearchBar({ movieID, setMovieID, searching, setSearching }) {
 				onChange={handleOnChange}
 			></input>
 
-			<ul className='movieGrid'>
-				{movies.map((movie) => (
-					<li key={movie.id} className='movie'>
-						<h2>{movie.title}</h2>
-						<img
-							src={movie.image}
-							alt={`Poster for the movie ${movie.title}`}
-							height='150px'
-							width='100px'
-						/>
-						<button onClick={() => handleOnClick(movie)}>Learn More</button>
-					</li>
-				))}
-			</ul>
+			{movies ? (
+				<ul className='movieGrid'>
+					{movies.map((movie) => (
+						<li key={movie.id} className='movie'>
+							<h2>{movie.title}</h2>
+							<img
+								src={movie.image}
+								alt={`Poster for the movie ${movie.title}`}
+								height='150px'
+								width='100px'
+							/>
+							<button onClick={() => handleOnClick(movie)}>Learn More</button>
+						</li>
+					))}
+				</ul>
+			) : null}
 		</div>
 	);
 }

@@ -43,4 +43,28 @@
 .movieGrid .movie h2 {
   font-size: 1.25rem;
 }
+
+.movieGrid .movie img {
+  height: 50%;
+  width: 50%;
+}
+
+@media (min-width: 768px) {
+  .movieGrid {
+    padding-top: 2rem;
+    gap: 2rem;
+  }
+  .movieGrid .movie {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 1 250px;
+            flex: 0 1 250px;
+  }
+  .movieGrid .movie h2 {
+    font-size: 1.5rem;
+  }
+  .movieGrid .movie img {
+    height: 60%;
+    width: 60%;
+  }
+}
 /*# sourceMappingURL=SearchBar.css.map */

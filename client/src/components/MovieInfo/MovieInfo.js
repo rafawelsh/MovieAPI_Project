@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import LikesCounter from "../LikesCounter/LikesCounter";
 
+import "./MovieInfo.css";
+
 function MoviesGrid({ movieID, setSearching }) {
 	const [movieInfo, setMovieInfo] = useState({});
 
@@ -24,25 +26,32 @@ function MoviesGrid({ movieID, setSearching }) {
 			.catch((err) => {
 				console.error(err);
 			});
-	}, []);
+	}, [movieID]);
 
 	const handleClick = () => {
 		setSearching(true);
 	};
 	// console.log(movieInfo);
 
-	const { id, length, title, year, rating, plot, poster, cast } = movieInfo;
+	const { id, length, title, year, plot, poster } = movieInfo;
 
 	return (
-		<div>
+		<div className='movie-tile'>
 			<button onClick={handleClick}>X</button>
-			{id}
-			{title}
-			{year}
-			{length}
-			{rating}
-			{length}
-			<LikesCounter movieID={id} />
+			<section className='movie-section'>
+				<img
+					className='movie-poster'
+					src={poster}
+					alt={`Poster for the movie:${title}`}
+				/>
+				<div className='movie-info'>
+					<h1>{title}</h1>
+					<h2>{year}</h2>
+					<h2>{length}</h2>
+					<p>{plot}</p>
+					<LikesCounter movieID={id} />
+				</div>
+			</section>
 		</div>
 	);
 }

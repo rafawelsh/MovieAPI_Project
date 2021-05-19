@@ -1,0 +1,74 @@
+.movie-tile {
+  min-height: 90vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.movie-tile button {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  padding: 0.5rem 0.75rem;
+  background-color: var(--button-color);
+  border: none;
+  border-radius: 0.25rem;
+}
+
+.movie-tile button:hover {
+  background-color: var(--button-color);
+  cursor: pointer;
+}
+
+.movie-tile .counter {
+  margin: 1rem;
+  font-size: 1.25rem;
+}
+
+.movie-section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 2rem;
+}
+
+.movie-section .movie-poster {
+  height: 50%;
+  width: 50%;
+}
+
+@media (min-width: 768px) {
+  .movie-section {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  .movie-section .movie-poster {
+    height: 40%;
+    width: 40%;
+  }
+  .movie-section h1 {
+    font-size: 2.5rem;
+  }
+  .movie-section h2 {
+    font-size: 2rem;
+  }
+  .movie-section p {
+    font-size: 1.5rem;
+  }
+}
+/*# sourceMappingURL=MovieInfo.css.map */
