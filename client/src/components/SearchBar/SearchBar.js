@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import MovieInfo from "../MovieInfo/MovieInfo";
 import "./SearchBar.css";
-function SearchBar() {
+function SearchBar({ movieID, setMovieID, searching, setSearching }) {
 	const [movies, setMovies] = useState([]);
 	const [userInput, setUserInput] = useState("");
-	const [searching, setSearching] = useState(true);
-	const [movieID, setMovieID] = useState("");
+
 	//API call
 	useEffect(() => {
 		if (userInput) {
@@ -55,24 +54,20 @@ function SearchBar() {
 				onChange={handleOnChange}
 			></input>
 
-			{searching && (
-				<ul>
-					{movies.map((movie) => (
-						<li key={movie.id}>
-							<p>{movie.title}</p>
-							<img
-								src={movie.image}
-								alt={`Poster for the movie ${movie.title}`}
-								height='150px'
-								widht='100px'
-							/>
-							<button onClick={() => handleOnClick(movie)}>Learn More</button>
-						</li>
-					))}
-				</ul>
-			)}
-
-			{!searching && <MovieInfo movieID={movieID} />}
+			<ul>
+				{movies.map((movie) => (
+					<li key={movie.id}>
+						<p>{movie.title}</p>
+						<img
+							src={movie.image}
+							alt={`Poster for the movie ${movie.title}`}
+							height='150px'
+							widht='100px'
+						/>
+						<button onClick={() => handleOnClick(movie)}>Learn More</button>
+					</li>
+				))}
+			</ul>
 		</div>
 	);
 }

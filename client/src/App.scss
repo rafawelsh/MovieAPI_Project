@@ -24,4 +24,6 @@ body {
 
 	background-color: var(--background-color);
 	color: var(--text-color);
+	display: flex;
+	justify-content: center;
 }
