@@ -21,9 +21,6 @@
 }
 
 .movieGrid .movie {
-  -webkit-box-flex: 0;
-      -ms-flex: 0 1 150px;
-          flex: 0 1 150px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -45,11 +42,11 @@
 }
 
 .movieGrid .movie img {
-  height: 50%;
-  width: 50%;
+  height: 75%;
+  width: 75%;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 500px) {
   .movieGrid {
     padding-top: 2rem;
     gap: 2rem;
