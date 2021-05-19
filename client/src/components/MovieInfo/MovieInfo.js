@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import LikesCounter from "../LikesCounter/LikesCounter";
 
-function MoviesGrid({ movieID }) {
+function MoviesGrid({ movieID, setSearching }) {
 	const [movieInfo, setMovieInfo] = useState({});
 
 	useEffect(() => {
@@ -26,12 +26,16 @@ function MoviesGrid({ movieID }) {
 			});
 	}, []);
 
+	const handleClick = () => {
+		setSearching(true);
+	};
 	// console.log(movieInfo);
 
 	const { id, length, title, year, rating, plot, poster, cast } = movieInfo;
 
 	return (
 		<div>
+			<button onClick={handleClick}>X</button>
 			{id}
 			{title}
 			{year}

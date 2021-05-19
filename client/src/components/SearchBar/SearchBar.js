@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import MovieInfo from "../MovieInfo/MovieInfo";
 import "./SearchBar.css";
+
 function SearchBar({ movieID, setMovieID, searching, setSearching }) {
 	const [movies, setMovies] = useState([]);
 	const [userInput, setUserInput] = useState("");
@@ -54,15 +54,15 @@ function SearchBar({ movieID, setMovieID, searching, setSearching }) {
 				onChange={handleOnChange}
 			></input>
 
-			<ul>
+			<ul className='movieGrid'>
 				{movies.map((movie) => (
-					<li key={movie.id}>
-						<p>{movie.title}</p>
+					<li key={movie.id} className='movie'>
+						<h2>{movie.title}</h2>
 						<img
 							src={movie.image}
 							alt={`Poster for the movie ${movie.title}`}
 							height='150px'
-							widht='100px'
+							width='100px'
 						/>
 						<button onClick={() => handleOnClick(movie)}>Learn More</button>
 					</li>

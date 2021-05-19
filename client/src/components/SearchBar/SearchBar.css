@@ -1,0 +1,46 @@
+#searchBar {
+  width: 70%;
+  height: 1.5rem;
+  font-size: 1.125rem;
+  max-width: 400px;
+  text-align: center;
+}
+
+.movieGrid {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  list-style-type: none;
+  gap: 1rem;
+  padding: 0;
+}
+
+.movieGrid .movie {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 150px;
+          flex: 0 1 150px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  justify-self: center;
+  background-color: var(--movie-tile);
+  padding-bottom: 0.5rem;
+  gap: 1rem;
+}
+
+.movieGrid .movie h2 {
+  font-size: 1.25rem;
+}
+/*# sourceMappingURL=SearchBar.css.map */

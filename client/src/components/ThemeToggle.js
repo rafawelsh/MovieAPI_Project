@@ -1,4 +1,7 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSun } from "@fortawesome/free-solid-svg-icons";
+import { faMoon } from "@fortawesome/free-solid-svg-icons";
 
 function ThemeToggle({ themeSwitch = (f) => f }) {
 	return (
@@ -8,7 +11,8 @@ function ThemeToggle({ themeSwitch = (f) => f }) {
 			onClick={themeSwitch}
 			aria-label='change theme color'
 		>
-			X
+			<FontAwesomeIcon icon={faSun} />
+			<FontAwesomeIcon icon={faMoon} />
 		</button>
 	);
 }
