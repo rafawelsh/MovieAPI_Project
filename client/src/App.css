@@ -2,8 +2,8 @@
 body {
   --text-color: #111;
   --background-color: #eee;
-  --movie-tile: rgb(225, 182, 182);
-  --button-color: rgb(118, 186, 238);
+  --movie-tile: rgb(218, 217, 217);
+  --button-color: rgb(72, 160, 228);
   font-family: "Source Sans Pro", sans-serif;
   background-color: var(--background-color);
   color: var(--text-color);
@@ -12,7 +12,7 @@ body {
 body.is_inverted {
   --text-color: #fff;
   --background-color: #222;
-  --movie-tile: rgb(155, 129, 129);
+  --movie-tile: rgb(65, 64, 64);
   --button-color: rgb(164, 203, 233);
 }
 
@@ -20,14 +20,14 @@ body.is_inverted {
   body {
     --text-color: #fff;
     --background-color: #222;
-    --movie-tile: rgb(155, 129, 129);
+    --movie-tile: rgb(65, 64, 64);
     --button-color: rgb(164, 203, 233);
   }
   body.is_inverted {
     --text-color: #111;
     --background-color: #eee;
-    --movie-tile: rgb(225, 182, 182);
-    --button-color: rgb(118, 186, 238);
+    --movie-tile: rgb(218, 217, 217);
+    --button-color: rgb(72, 160, 228);
   }
 }
 
@@ -64,5 +64,11 @@ body.is_inverted {
 
 .toggle-button .toggle-sun {
   color: var(--text-color);
+}
+
+@media (min-width: 768px) {
+  .toggle-button {
+    padding-top: 0.5rem;
+  }
 }
 /*# sourceMappingURL=App.css.map */

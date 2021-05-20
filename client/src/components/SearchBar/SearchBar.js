@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from "react";
 import "./SearchBar.css";
 
-function SearchBar({
-	movieID,
-	setMovieID,
-	searching,
-	setSearching,
-	userInput,
-	setUserInput,
-}) {
+function SearchBar({ setMovieID, setSearching, userInput, setUserInput }) {
 	const [movies, setMovies] = useState([]);
+
+	const {
+		REACT_APP_API_SEARCH,
+		REACT_APP_RAPIDAPI_KEY,
+		REACT_APP_RAPIDAPI_HOST,
+	} = process.env;
 
 	//API call
 	useEffect(() => {
@@ -17,18 +16,13 @@ function SearchBar({
 			setMovies();
 		}
 		if (userInput) {
-			fetch(
-				`https://imdb-internet-movie-database-unofficial.p.rapidapi.com/search/${userInput}`,
-				{
-					method: "GET",
-					headers: {
-						"x-rapidapi-key":
-							"f97c444b7dmsh3fbb6dfde347f83p15ab3cjsn3001e7910778",
-						"x-rapidapi-host":
-							"imdb-internet-movie-database-unofficial.p.rapidapi.com",
-					},
-				}
-			)
+			fetch(`${REACT_APP_API_SEARCH}${userInput}`, {
+				method: "GET",
+				headers: {
+					"x-rapidapi-key": `${REACT_APP_RAPIDAPI_KEY}`,
+					"x-rapidapi-host": `${REACT_APP_RAPIDAPI_HOST}`,
+				},
+			})
 				.then((response) => response.json())
 				.then((data) => {
 					setMovies(data.titles);
@@ -37,12 +31,9 @@ function SearchBar({
 					console.error(err);
 				});
 		}
+		// eslint-disable-next-line
 	}, [userInput]);
 
-	// console.log(movies);
-	// console.log(isLoading);
-
-	//input reader
 	const handleOnChange = (event) => {
 		setUserInput(event.target.value);
 	};
@@ -74,7 +65,12 @@ function SearchBar({
 								height='150px'
 								width='100px'
 							/>
-							<button onClick={() => handleOnClick(movie)}>Learn More</button>
+							<button
+								className='btn-learn-more'
+								onClick={() => handleOnClick(movie)}
+							>
+								Learn More
+							</button>
 						</li>
 					))}
 				</ul>

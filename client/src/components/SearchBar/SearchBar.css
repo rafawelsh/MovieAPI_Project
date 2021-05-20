@@ -46,6 +46,20 @@
   width: 75%;
 }
 
+.movieGrid .movie .btn-learn-more {
+  border: 0.125rem solid var(--button-color);
+  border-radius: 0.125rem;
+  padding: 0.5rem 1rem;
+  background: transparent;
+  color: var(--button-color);
+}
+
+.movieGrid .movie .btn-learn-more:hover {
+  background-color: var(--button-color);
+  color: var(--background-color);
+  cursor: pointer;
+}
+
 @media (min-width: 500px) {
   .movieGrid {
     padding-top: 2rem;

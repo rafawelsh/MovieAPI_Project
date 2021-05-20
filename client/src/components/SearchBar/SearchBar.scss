@@ -30,6 +30,20 @@
 			height: 75%;
 			width: 75%;
 		}
+
+		.btn-learn-more {
+			border: 0.125rem solid var(--button-color);
+			border-radius: 0.125rem;
+			padding: 0.5rem 1rem;
+			background: transparent;
+			color: var(--button-color);
+
+			&:hover {
+				background-color: var(--button-color);
+				color: var(--background-color);
+				cursor: pointer;
+			}
+		}
 	}
 
 	@media (min-width: 500px) {

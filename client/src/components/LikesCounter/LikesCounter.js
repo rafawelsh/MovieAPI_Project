@@ -7,9 +7,9 @@ function LikesCounter({ movieID }) {
 	const [movieData, setMovieData] = useState({});
 
 	useEffect(() => {
-		console.log(movieID);
-
 		if (!movieID) return null;
+		// retrieve likes/dislikes from Firebase and set data
+		// ELSE set a new entry in Firebase with movieID and set data
 		const movieRef = firebase.database().ref(`${movieID}/`);
 		movieRef.on("value", (data) => {
 			if (data.val() !== null) {
@@ -33,13 +33,10 @@ function LikesCounter({ movieID }) {
 		const { dislikes: down, likes: up } = movieData;
 		setDislikes(down);
 		setLikes(up);
-		// console.log(likes, dislikes);
 	}, [dislikes, likes, movieData]);
 
 	const handleLikeClick = () => {
-		// console.log(movieID);
 		const updates = {};
-		// console.log(updates);
 		updates[`${movieID}/likes`] = firebase.database.ServerValue.increment(1);
 		firebase.database().ref().update(updates);
 	};

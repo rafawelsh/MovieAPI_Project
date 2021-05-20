@@ -4,4 +4,10 @@
   padding: 1rem 0;
   text-align: center;
 }
+
+@media (min-width: 768px) {
+  .homepage {
+    padding: 0rem;
+  }
+}
 /*# sourceMappingURL=Homepage.css.map */

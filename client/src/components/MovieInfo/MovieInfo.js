@@ -3,22 +3,24 @@ import LikesCounter from "../LikesCounter/LikesCounter";
 
 import "./MovieInfo.css";
 
-function MoviesGrid({ movieID, setSearching }) {
+function MoviesGrid({ movieID, setSearching, user }) {
 	const [movieInfo, setMovieInfo] = useState({});
 	const [loading, setLoading] = useState(true);
+
+	const {
+		REACT_APP_API_MOVIE,
+		REACT_APP_RAPIDAPI_KEY,
+		REACT_APP_RAPIDAPI_HOST,
+	} = process.env;
+
 	useEffect(() => {
-		fetch(
-			`https://imdb-internet-movie-database-unofficial.p.rapidapi.com/film/${movieID}`,
-			{
-				method: "GET",
-				headers: {
-					"x-rapidapi-key":
-						"f97c444b7dmsh3fbb6dfde347f83p15ab3cjsn3001e7910778",
-					"x-rapidapi-host":
-						"imdb-internet-movie-database-unofficial.p.rapidapi.com",
-				},
-			}
-		)
+		fetch(`${REACT_APP_API_MOVIE}${movieID}`, {
+			method: "GET",
+			headers: {
+				"x-rapidapi-key": `${REACT_APP_RAPIDAPI_KEY}`,
+				"x-rapidapi-host": `${REACT_APP_RAPIDAPI_HOST}`,
+			},
+		})
 			.then((response) => response.json())
 			.then((data) => {
 				setMovieInfo(data);
@@ -27,6 +29,7 @@ function MoviesGrid({ movieID, setSearching }) {
 			.catch((err) => {
 				console.error(err);
 			});
+		// eslint-disable-next-line
 	}, [movieID]);
 
 	const Loading = () => {
@@ -53,8 +56,8 @@ function MoviesGrid({ movieID, setSearching }) {
 					/>
 					<div className='movie-info'>
 						<h1>{title}</h1>
-						<h2>{year}</h2>
-						<h2>{length}</h2>
+						<h2>Released: {year}</h2>
+						<h2>Duration: {length}</h2>
 						<p>{plot}</p>
 						<LikesCounter movieID={id} />
 					</div>
