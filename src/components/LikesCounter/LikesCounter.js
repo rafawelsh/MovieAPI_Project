@@ -21,9 +21,6 @@ function LikesCounter({ movieID }) {
 					likes: 0,
 					dislikes: 0,
 				});
-				setMovieData({
-					...data.val(),
-				});
 			}
 		});
 	}, [movieID]);
@@ -47,6 +44,7 @@ function LikesCounter({ movieID }) {
 		firebase.database().ref().update(updates);
 	};
 
+	console.log({ likes }, { dislikes });
 	return (
 		<div>
 			<button className='counter' onClick={() => handleLikeClick(movieID)}>
